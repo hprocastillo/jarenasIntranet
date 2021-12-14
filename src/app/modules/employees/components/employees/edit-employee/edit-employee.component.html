@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-header">
+    <h5>EDITAR EMPLEADO</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-6">
+        <form #editForm="ngForm" (ngSubmit)="getEdit(user, employeeId)">
+
+          <!-- Employee Types -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="cbEmployeeType">TIPO DE EMPLEADO:</label>
+            <div class="col-lg-7">
+              <select [(ngModel)]="employee.employeeTypeId" class="form-control" id="cbEmployeeType"
+                      name="employeeTypeId">
+                <option *ngFor="let et of listEmployeeTypes" value="{{et.id}}">{{et.description}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- NAME -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtName">NOMBRE:</label>
+            <div class="col-lg-7">
+              <input [(ngModel)]="employee.name" class="form-control" id="txtName" name="name" type="text">
+            </div>
+          </div>
+
+          <!-- DNI -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtDni">DNI:</label>
+            <div class="col-lg-7">
+              <input [(ngModel)]="employee.dni" class="form-control" id="txtDni" name="dni" type="text">
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtEmail">CORREO ELECTRÓNICO:</label>
+            <div class="col-lg-7">
+              <input [(ngModel)]="employee.email" class="form-control" id="txtEmail" name="email" type="email">
+            </div>
+          </div>
+
+          <!-- PHONE -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtPhone">TELÉFONO:</label>
+            <div class="col-lg-7">
+              <input [(ngModel)]="employee.phone" class="form-control" id="txtPhone" name="phone" type="text">
+            </div>
+          </div>
+
+          <!-- ADDRESS -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtAddress">DIRECCIÓN:</label>
+            <div class="col-lg-7">
+              <input [(ngModel)]="employee.address" class="form-control" id="txtAddress" name="address" type="text">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button (click)="getCancel()" class="btn btn-danger btn-block" type="reset">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-primary btn-block" type="submit">GUARDAR</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

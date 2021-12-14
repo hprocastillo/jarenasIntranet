@@ -1,0 +1,25 @@
+<ul class="list-group list-group-flush">
+  <li [routerLink]="['dashboard']" class="list-group-item">
+    INICIO
+  </li>
+</ul>
+<ngb-accordion [closeOthers]="true">
+  <ngb-panel id="static-1" title="EMPLEADOS">
+    <ng-template ngbPanelContent>
+      <ul class="list-group list-group-flush">
+        <li [routerLink]="['employees/employees']" class="list-group-item p-1">EMPLEADOS</li>
+        <li [routerLink]="['employees/schedule']" class="list-group-item p-1">HORARIOS</li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel id="static-2" title="LOGISTICA">
+    <ng-template ngbPanelContent>
+      <ul class="list-group list-group-flush">
+        <li [routerLink]="['logistics/vehicles']" class="list-group-item p-1">VEHICULOS</li>
+        <li [routerLink]="['logistics/routes']" class="list-group-item p-1">RUTAS</li>
+        <li [routerLink]="['logistics/checklists']" class="list-group-item p-1">CHECKLIST</li>
+        <li [routerLink]="['logistics/reports']" class="list-group-item p-1">REPORTES</li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-header">
+    <h5>EDITAR TIPO DE EMPLEADO</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-6">
+        <form #editForm="ngForm" (ngSubmit)="getEdit()">
+
+          <!-- Description -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtName">DESCRIPCIÓN:</label>
+            <div class="col-lg-7">
+              <input [(ngModel)]="employeeType.description" class="form-control" id="txtName" name="description"
+                     type="text">
+            </div>
+          </div>
+
+          <!--          <h5>PERMISOS:</h5>-->
+          <!--          <br>-->
+
+          <!--          <div class="form-check">-->
+          <!--            &lt;!&ndash;            <input [(ngModel)]="employeeType.securityModule" class="form-check-input" id="securityCheck"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   name="securityModule"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   type="checkbox">&ndash;&gt;-->
+          <!--            &lt;!&ndash;            <label class="form-check-label" for="securityCheck">&ndash;&gt;-->
+          <!--            &lt;!&ndash;              MODULO DE SEGURIDAD&ndash;&gt;-->
+          <!--            &lt;!&ndash;            </label>&ndash;&gt;-->
+          <!--          </div>-->
+          <!--          <div class="form-check">-->
+          <!--            &lt;!&ndash;            <input [(ngModel)]="employeeType.employeeModule" class="form-check-input" id="employeeCheck"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   name="employeeModule"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   type="checkbox">&ndash;&gt;-->
+          <!--            &lt;!&ndash;            <label class="form-check-label" for="employeeCheck">&ndash;&gt;-->
+          <!--            &lt;!&ndash;              MODULO DE RR.HH&ndash;&gt;-->
+          <!--            &lt;!&ndash;            </label>&ndash;&gt;-->
+          <!--          </div>-->
+          <!--          <div class="form-check">-->
+          <!--            &lt;!&ndash;            <input [(ngModel)]="employeeType.logisticsModule" class="form-check-input" id="logisticsCheck"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   name="logisticsModule" type="checkbox">&ndash;&gt;-->
+          <!--            &lt;!&ndash;            <label class="form-check-label" for="logisticsCheck">&ndash;&gt;-->
+          <!--            &lt;!&ndash;              MODULO DE LOGÍSTICA&ndash;&gt;-->
+          <!--            &lt;!&ndash;            </label>&ndash;&gt;-->
+          <!--          </div>-->
+          <!--          <div class="form-check">-->
+          <!--            &lt;!&ndash;            <input [(ngModel)]="employeeType.configModule" class="form-check-input" id="configCheck"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   name="configModule"&ndash;&gt;-->
+          <!--            &lt;!&ndash;                   type="checkbox">&ndash;&gt;-->
+          <!--            &lt;!&ndash;            <label class="form-check-label" for="configCheck">&ndash;&gt;-->
+          <!--            &lt;!&ndash;              MODULO DE CONFIGURACIÓN&ndash;&gt;-->
+          <!--            &lt;!&ndash;            </label>&ndash;&gt;-->
+          <!--          </div>-->
+          <!--          <br>-->
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button type="reset" class="btn btn-danger btn-block" (click)="getCancel()">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button type="submit" class="btn btn-primary btn-block">GUARDAR</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-lg-6"></div>
+    </div>
+  </div>
+</div>

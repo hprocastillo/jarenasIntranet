@@ -1,0 +1,75 @@
+<ng-container *ngIf="authSvc.user$ | async as user">
+  <ul #nav="ngbNav" [(activeId)]="active" class="nav-tabs" ngbNav>
+
+    <!------------- EMPLOYEES ------------->
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>EMPLEADOS</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST EMPLOYEES -->
+        <ng-container *ngIf="pageListEmployees === true">
+          <app-list-employees
+            (add)="showNewEmployee()"
+            (edit)="getEditEmployee($event)"
+            [user]="user">
+          </app-list-employees>
+        </ng-container>
+
+        <!-- NEW EMPLOYEE -->
+        <ng-container *ngIf="pageNewEmployee === true">
+          <app-new-employee
+            (cancel)="showListEmployees()"
+            [user]="user">
+          </app-new-employee>
+        </ng-container>
+
+        <!-- EDIT EMPLOYEE -->
+        <ng-container *ngIf="pageEditEmployee === true">
+          <app-edit-employee
+            (cancel)="showListEmployees()"
+            [employeeId]="editEmployee"
+            [user]="user">
+          </app-edit-employee>
+        </ng-container>
+
+      </ng-template>
+    </li>
+
+    <!------------- EMPLOYEES TYPES -------------->
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>TIPOS DE EMPLEADO</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST EMPLOYEES TYPE -->
+        <ng-container *ngIf="pageListEmployeesTypes === true">
+          <app-list-employees-types
+            (add)="showNewEmployeeTypes()"
+            (edit)="getEditEmployeeTypes($event)"
+            [user]="user">
+          </app-list-employees-types>
+        </ng-container>
+
+        <!-- EDIT EMPLOYEE TYPES -->
+        <ng-container *ngIf="pageEditEmployeeTypes === true">
+          <app-edit-employee-types
+            (cancel)="showListEmployeesTypes()"
+            [employeeTypeId]="editEmployeeType"
+            [user]="user">
+          </app-edit-employee-types>
+        </ng-container>
+
+        <!-- NEW EMPLOYEES TYPES -->
+        <ng-container *ngIf="pageNewEmployeeTypes === true">
+          <app-new-employee-types
+            (cancel)="showListEmployeesTypes()"
+            [user]="user">
+          </app-new-employee-types>
+        </ng-container>
+
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+</ng-container>

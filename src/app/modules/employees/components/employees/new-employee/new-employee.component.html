@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-header">
+    <h5>NUEVO EMPLEADO</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-6">
+        <form (ngSubmit)="getSave(user)" [formGroup]="newForm">
+
+          <!-- Employee Types -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtEmployeeType">TIPO DE EMPLEADO:</label>
+            <div class="col-lg-7">
+              <select class="form-control" formControlName="employeeTypeId" id="txtEmployeeType" required>
+                <option selected value="">SELECCIONAR</option>
+                <option *ngFor="let et of listEmployeesTypes" value="{{et.id}}">{{et.description}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- NAME -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtName">NOMBRE:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="name" id="txtName" type="text">
+            </div>
+          </div>
+
+          <!-- DNI -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtDni">DNI:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="dni" id="txtDni" type="text">
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtEmail">CORREO ELECTRÓNICO:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="email" id="txtEmail" type="email">
+            </div>
+          </div>
+
+          <!-- PHONE -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtPhone">TELÉFONO:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="phone" id="txtPhone" type="text">
+            </div>
+          </div>
+
+          <!-- ADDRESS -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtAddress">DIRECCIÓN:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="address" id="txtAddress" type="text">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button type="reset" class="btn btn-danger btn-block" (click)="getCancel()">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button type="submit" class="btn btn-primary btn-block">GUARDAR</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
