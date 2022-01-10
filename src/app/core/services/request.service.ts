@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {map} from "rxjs";
+import {Request} from "../interfaces/request";
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class RequestService {
   getRequestsByJoin() {
     return this.afs.collection<Request>('requests', ref => ref
       .where('requestType', '==', 'JOIN')
-      .where('active', '==', true)
-      .orderBy('createdAt', 'desc'))
+      .where('status', '==', 'WAITING')
+      .where('active', '==', true))
       .snapshotChanges().pipe(map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Request;
         const id = a.payload.doc.id;
@@ -32,6 +33,7 @@ export class RequestService {
   getRequestsHistoricalJoin() {
     return this.afs.collection<Request>('requests', ref => ref
       .where('requestType', '==', 'JOIN')
+      .where('status', '==', 'ATENDIDO')
       .where('active', '==', false)
       .orderBy('createdAt', 'desc'))
       .snapshotChanges().pipe(map(actions => actions.map(a => {

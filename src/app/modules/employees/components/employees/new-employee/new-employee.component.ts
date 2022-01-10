@@ -12,21 +12,17 @@ import User = firebase.User;
   styleUrls: ['./new-employee.component.scss']
 })
 export class NewEmployeeComponent implements OnInit, OnDestroy {
-  //UNSUBSCRIBE METHOD
-  private unsubscribe$ = new Subject<void>();
-
   //INPUTS AND OUTPUTS
   @Input() user = {} as User;
   @Output() cancel = new EventEmitter<boolean>();
-
   //NEW FORM
   newForm: FormGroup;
-
   //RESULTS
   listEmployeesTypes: EmployeeTypes[] = [];
-
   //VARIABLES
   today = new Date();
+  //UNSUBSCRIBE METHOD
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,

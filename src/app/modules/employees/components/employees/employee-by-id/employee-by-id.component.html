@@ -1,0 +1,10 @@
+<!-- SHOW IF EMPLOYEE IS NOT ASSIGNED -->
+<ng-container *ngIf="employeeId === '0'; else assigned">
+  <p class="text-danger font-weight-bold">VEHÍCULO SIN ASIGNAR</p>
+</ng-container>
+
+
+<!-- SHOW IF EMPLOYEE IS ASSIGNED -->
+<ng-template #assigned>
+  <p>{{employee.name}}</p>
+</ng-template>

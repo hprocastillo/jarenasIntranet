@@ -1,0 +1,107 @@
+<div class="card">
+  <div class="card-header">
+    <h5>NUEVA RUTA</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8">
+        <form (ngSubmit)="getSave(user)" [formGroup]="newForm">
+
+          <!-- Description -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="txtDescription">DESCRIPCIÓN:</label>
+            <div class="col-lg-8">
+              <input class="form-control" formControlName="description" id="txtDescription"
+                     placeholder="Ej: Nazca - Lima"
+                     type="text">
+            </div>
+          </div>
+
+          <!-- Origin City -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="cbOriginCity">CIUDAD ORIGEN:</label>
+            <div class="col-lg-8">
+              <select class="form-control" formControlName="originCity" id="cbOriginCity">
+                <option selected value="">SELECCIONAR</option>
+                <option *ngFor="let city of listCities" value="{{city.id}}">{{city.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Origin Address -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="txtOriginAddress">DIRECCIÓN ORIGEN:</label>
+            <div class="col-lg-8">
+              <input class="form-control" formControlName="originAddress" id="txtOriginAddress"
+                     placeholder="Ej: Av. Argentina 3201 - Callao"
+                     type="text">
+            </div>
+          </div>
+
+          <!-- Origin Location -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="txtOriginLocation">UBICACIÓN ORIGEN:</label>
+            <div class="col-lg-8">
+              <input class="form-control" formControlName="originLocation" id="txtOriginLocation"
+                     placeholder="Ej: Av. Argentina 3201 - Callao"
+                     type="text">
+            </div>
+          </div>
+
+          <!-- Destination City -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="cbDestinationCity">CIUDAD DESTINO:</label>
+            <div class="col-lg-8">
+              <select class="form-control" formControlName="destinationCity" id="cbDestinationCity">
+                <option selected value="">SELECCIONAR</option>
+                <option *ngFor="let city of listCities" value="{{city.id}}">{{city.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Destination Address -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="txtDestinationAddress">DIRECCIÓN DESTINO:</label>
+            <div class="col-lg-8">
+              <input class="form-control" formControlName="destinationAddress" id="txtDestinationAddress"
+                     placeholder="Ej: Av. Argentina 3201 - Callao"
+                     type="text">
+            </div>
+          </div>
+
+          <!-- Destination Location -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="txtDestinationLocation">UBICACIÓN DESTINO:</label>
+            <div class="col-lg-8">
+              <input class="form-control" formControlName="destinationLocation" id="txtDestinationLocation"
+                     placeholder="Ej: Av. Argentina 3201 - Callao"
+                     type="text">
+            </div>
+          </div>
+
+          <!-- Time of Arrival -->
+          <div class="form-group row">
+            <label class="col-lg-4 col-form-label" for="txtTimeOfArrival">TIEMPO LLEGADA:</label>
+            <div class="col-lg-8">
+              <input class="form-control" formControlName="timeOfArrival" id="txtTimeOfArrival" placeholder="Ej: 180"
+                     type="number">
+              <p class="text-muted m-0 p-0"><small>Ingrese el tiempo de llegada en horas.</small></p>
+              <p class="text-muted m-0 p-0"><small>(Ej: 50 Hrs.)</small></p>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button (click)="getCancel()" class="btn btn-danger btn-block" type="reset">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-primary btn-block" type="submit">GUARDAR</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

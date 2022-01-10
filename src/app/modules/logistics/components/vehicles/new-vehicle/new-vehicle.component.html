@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-header">
+    <h5>NUEVO VEHÍCULO</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8">
+        <form (ngSubmit)="getSave(user)" [formGroup]="newForm">
+
+          <!-- Employee -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="cbEmployee">CONDUCTOR:</label>
+            <div class="col-lg-7">
+              <select class="form-control" formControlName="employeeId" id="cbEmployee">
+                <option selected value="">SELECCIONAR</option>
+                <option value="0">SIN ASIGNAR</option>
+                <option *ngFor="let employee of listEmployees" value="{{employee.id}}">{{employee.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Brand -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="cbBrand">MARCA VEHÍCULO:</label>
+            <div class="col-lg-7">
+              <select class="form-control" formControlName="brandId" id="cbBrand">
+                <option selected value="0">SELECCIONAR</option>
+                <option *ngFor="let brand of listBrands" value="{{brand.id}}">{{brand.brand}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtDescription">DESCRIPCIÓN:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="description" id="txtDescription" type="text">
+            </div>
+          </div>
+
+          <!-- Badge -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtBadge">PLACA:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="badge" id="txtBadge" type="text">
+            </div>
+          </div>
+
+          <!-- BirthDay -->
+          <div class="form-group row">
+            <label class="col-lg-5 col-form-label" for="txtBirthDay">AÑO DE FABRICACIÓN:</label>
+            <div class="col-lg-7">
+              <input class="form-control" formControlName="birthDay" id="txtBirthDay" type="text">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button (click)="getCancel()" class="btn btn-danger btn-block" type="reset">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-primary btn-block" type="submit">GUARDAR</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

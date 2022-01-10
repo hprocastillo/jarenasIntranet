@@ -5,7 +5,7 @@
 
   <div class="card-body">
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-8">
         <form (ngSubmit)="getSave(user)" [formGroup]="newForm">
 
           <!-- Employee Types -->
@@ -61,10 +61,10 @@
 
           <div class="form-group row">
             <div class="col-lg-4">
-              <button type="reset" class="btn btn-danger btn-block" (click)="getCancel()">CANCELAR</button>
+              <button (click)="getCancel()" class="btn btn-danger btn-block" type="reset">CANCELAR</button>
             </div>
             <div class="col-lg-4">
-              <button type="submit" class="btn btn-primary btn-block">GUARDAR</button>
+              <button class="btn btn-primary btn-block" type="submit">GUARDAR</button>
             </div>
           </div>
 

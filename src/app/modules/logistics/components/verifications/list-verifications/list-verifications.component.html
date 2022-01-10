@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <div class="title">
+    </div>
+    <div class="toolbar">
+      <app-toolbar-logistics
+        (btnExcelOut)="getExportExcel()"
+        (btnPrintOut)="getPrint()"
+        [btnExcelIn]="true"
+        [btnPrintIn]="true">
+      </app-toolbar-logistics>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover" id="exportExcel">
+        <thead>
+        <tr class="text-nowrap">
+          <th scope="col"></th>
+          <th scope="col">ENTREGADO</th>
+          <th scope="col">CHECKLIST</th>
+          <th scope="col">EMPLEADO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let verification of listVerifications | slice: (page - 1) * pageSize:page * pageSize"
+            class="text-nowrap">
+          <td>
+            <!-- Button View -->
+            <button (click)="onView(verification.id)" class="btn btn-primary btn-sm pt-0" type="button">
+              <svg class="bi bi-eye-fill" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+            </button>
+          </td>
+          <td>{{verification.createdAt.toDate() | date:'MMM d, y'}}</td>
+          <td>
+            <app-checklist-by-id [checklistId]="verification.checklistId"></app-checklist-by-id>
+          </td>
+          <td>
+            <app-employee-by-id [employeeId]="verification.employeeId"></app-employee-by-id>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <ngb-pagination [(page)]="page" [collectionSize]="listVerifications.length" [pageSize]="pageSize"></ngb-pagination>
+  </div>
+</div>

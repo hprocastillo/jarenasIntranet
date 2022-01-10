@@ -33,8 +33,7 @@ export class EmployeeService {
 
   getEmployeesByEmployeeType(employeeTypeId: any) {
     return this.afs.collection<Employee>('employees', ref => ref
-      .where('employeeTypeId', '==', employeeTypeId)
-      .orderBy('createdAt', 'desc'))
+      .where('employeeTypeId', '==', employeeTypeId))
       .snapshotChanges().pipe(map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Employee;
         const id = a.payload.doc.id;
@@ -55,7 +54,7 @@ export class EmployeeService {
     });
   }
 
-  updateEmployee(employee: Employee, employeeId: string): Promise<void> {
+  updateEmployee(employee: Employee, employeeId: any): Promise<void> {
     return new Promise(async (resolve, reject) => {
       try {
         const id = employeeId;

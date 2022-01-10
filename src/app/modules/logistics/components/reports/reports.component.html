@@ -1,1 +1,22 @@
-<p>reports works!</p>
+<ng-container *ngIf="authSvc.user$ | async as user">
+
+  <ul #nav="ngbNav" [(activeId)]="active" class="nav-tabs" ngbNav>
+
+    <!------------- INDICATORS BY VEHICLE ------------->
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>INDICADORES POR VEHÍCULO</a>
+      <ng-template ngbNavContent>
+
+        <ng-container *ngIf="pageIndicatorsByVehicle === true">
+          <app-reports-by-vehicle
+            [user]="user">
+          </app-reports-by-vehicle>
+        </ng-container>
+
+      </ng-template>
+    </li>
+
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</ng-container>

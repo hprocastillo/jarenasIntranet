@@ -1,0 +1,43 @@
+<ng-container *ngIf="verification">
+  <ng-container *ngIf="checklist">
+
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div class="title">
+          <h5>{{checklist.description}}</h5>
+        </div>
+        <div class="toolbar">
+          <app-toolbar-logistics
+            (btnPrintOut)="getPrint()"
+            [btnPrintIn]="true">
+          </app-toolbar-logistics>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <p class="text-muted">Empleado:
+          <span class="font-weight-bold">
+          <app-employee-by-id [employeeId]="verification.employeeId"></app-employee-by-id>
+          </span>
+        </p>
+
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let question of listQuestions" class="list-group-item">
+            <div class="question">
+              {{question.description}}
+            </div>
+            <div class="answer">
+              <app-view-answer
+                [categoryId]="question.categoryId"
+                [checklistId]="verification.checklistId"
+                [employeeId]="verification.employeeId"
+                [questionId]="question.id">
+              </app-view-answer>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>

@@ -4,12 +4,15 @@ import Timestamp = firebase.firestore.Timestamp;
 export interface Request {
   id?: string;
   message: string;
-  userDisplayName: string;
-  userEmail: string;
   active: boolean;
-  status: string;
+  status: string; //WAITING, ACCEPTED, REJECTED
+  requestType: string; //JOIN: join to company,  ADD: add a friend
 
-  requestType: string;
+  //DATA USER REQUESTER
+  userId: string | any;
+  userName: string | any;
+  userEmail: string | any;
+  userPhotoUrl: string | any;
 
   createdBy: string;
   createdAt: Timestamp;

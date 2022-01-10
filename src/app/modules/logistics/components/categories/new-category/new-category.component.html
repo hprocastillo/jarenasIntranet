@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">
+    <h5>NUEVA CATEGORIA</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8">
+        <form (ngSubmit)="getSave(user)" [formGroup]="newForm">
+
+          <!-- Name -->
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label" for="txtName">NOMBRE:</label>
+            <div class="col-lg-9">
+              <input class="form-control" formControlName="name" id="txtName" type="text">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button (click)="getCancel()" class="btn btn-danger btn-block" type="reset">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-primary btn-block" type="submit">GUARDAR</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

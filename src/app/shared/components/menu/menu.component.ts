@@ -1,6 +1,4 @@
-import {Component, Input} from '@angular/core';
-import firebase from "firebase";
-import User = firebase.User;
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +6,4 @@ import User = firebase.User;
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  //Inputs and Outputs
-  @Input() user = {} as User;
 }

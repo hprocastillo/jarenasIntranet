@@ -13,6 +13,19 @@ import {NavbarComponent} from './shared/components/navbar/navbar.component';
 import {MenuComponent} from './shared/components/menu/menu.component';
 import {HeaderComponent} from './shared/components/header/header.component';
 import {ConfigComponent} from './shared/components/config/config.component';
+import {
+  NotificationBadgeComponent
+} from './shared/components/notifications/notification-badge/notification-badge.component';
+import {NotificationsComponent} from './shared/components/notifications/notifications.component';
+import {
+  WaitingNotificationsComponent
+} from './shared/components/notifications/waiting-notifications/waiting-notifications.component';
+import {
+  HistoricalNotificationsComponent
+} from './shared/components/notifications/historical-notifications/historical-notifications.component';
+import {
+  ModalRequestResponseComponent
+} from './shared/components/notifications/modal-request-response/modal-request-response.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +34,11 @@ import {ConfigComponent} from './shared/components/config/config.component';
     MenuComponent,
     HeaderComponent,
     ConfigComponent,
+    NotificationBadgeComponent,
+    NotificationsComponent,
+    WaitingNotificationsComponent,
+    HistoricalNotificationsComponent,
+    ModalRequestResponseComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from "../../../../core/services/auth.service";
 
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
-export class ReportsComponent implements OnInit {
+export class ReportsComponent {
+  //INITIAL TAB
+  active = 1;
 
-  constructor() { }
+  //PAGES
+  pageIndicatorsByVehicle: boolean = true;
 
-  ngOnInit(): void {
+  constructor(public authSvc: AuthService) {
   }
-
 }

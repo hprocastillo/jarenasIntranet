@@ -4,6 +4,8 @@ import * as XLSX from "xlsx";
 import {Employee} from "../../../../../core/interfaces/employee";
 import {EmployeeService} from "../../../../../core/services/employee.service";
 import {Subject, takeUntil} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalDeleteEmployeeComponent} from "../modal-delete-employee/modal-delete-employee.component";
 import User = firebase.User;
 
 @Component({
@@ -31,7 +33,9 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
   page: number = 1;
   pageSize: number = 5;
 
-  constructor(private employeeSvc: EmployeeService) {
+  constructor(
+    private modalService: NgbModal,
+    private employeeSvc: EmployeeService) {
   }
 
   ngOnInit(): void {
@@ -44,10 +48,10 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
     );
   }
 
-  getDelete(employee: Employee) {
-    if (confirm("Desea eliminar el empleado: " + employee.name + "?")) {
-      this.employeeSvc.deleteEmployee(employee.id).then(r => console.log(r));
-    }
+  getModalDelete(employee: Employee) {
+    const modalRef = this.modalService.open(ModalDeleteEmployeeComponent, {centered: true});
+    modalRef.componentInstance.employeeId = employee.id;
+    modalRef.componentInstance.employeeName = employee.name;
   }
 
   getEdit(employeeId: any) {
@@ -69,6 +73,15 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Hoja1');
     XLSX.writeFile(wb, this.fileName);
+  }
+
+  getStatus(event: any, employeeId: string, userId: string) {
+    let employee = {} as Employee;
+    employee.status = event.value === 'true';
+    employee.updatedBy = userId;
+    // @ts-ignore
+    employee.updatedAt = this.today;
+    this.employeeSvc.updateEmployee(employee, employeeId).then();
   }
 
   ngOnDestroy(): void {

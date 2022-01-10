@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ConfigComponent} from "./shared/components/config/config.component";
 import {AuthGuard} from "./core/guards/auth.guard";
+import {NotificationsComponent} from "./shared/components/notifications/notifications.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'config/:userId', component: ConfigComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard]
   },
   {
     path: '**',

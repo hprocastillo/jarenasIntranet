@@ -1,1 +1,125 @@
-<p>checklists works!</p>
+<ng-container *ngIf="authSvc.user$ | async as user">
+
+  <ul #nav="ngbNav" [(activeId)]="active" class="nav-tabs" ngbNav>
+
+    <!------------- CHECKLIST ------------->
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>CHECKLIST</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST CHECKLIST -->
+        <ng-container *ngIf="listPageChecklist === true">
+          <app-list-checklist
+            (add)="showNewPageChecklist()"
+            (edit)="getEditChecklist($event)"
+            [user]="user">
+          </app-list-checklist>
+        </ng-container>
+
+        <!-- NEW CHECKLIST -->
+        <ng-container *ngIf="newPageChecklist === true">
+          <app-new-checklist
+            (cancel)="showListPageChecklist()"
+            [user]="user">
+          </app-new-checklist>
+        </ng-container>
+        <!-- EDIT CHECKLIST -->
+        <ng-container *ngIf="editPageChecklist === true">
+          <app-edit-checklist
+            (cancel)="showListPageChecklist()"
+            [editChecklist]="editChecklist"
+            [user]="user">
+          </app-edit-checklist>
+        </ng-container>
+      </ng-template>
+    </li>
+
+    <!------------- QUESTIONS -------------->
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>PREGUNTAS</a>
+      <ng-template ngbNavContent>
+        <!-- LIST QUESTIONS -->
+        <ng-container *ngIf="listPageQuestion === true">
+          <app-list-questions
+            (add)="showNewPageQuestion()"
+            (edit)="getEditQuestion($event)"
+            [user]="user">
+          </app-list-questions>
+        </ng-container>
+        <!-- NEW QUESTION -->
+        <ng-container *ngIf="newPageQuestion === true">
+          <app-new-question
+            (cancel)="showListPageQuestion()"
+            [user]="user">
+          </app-new-question>
+        </ng-container>
+        <!-- EDIT QUESTION -->
+        <ng-container *ngIf="editPageQuestion === true">
+          <app-edit-question
+            (cancel)="showListPageQuestion()"
+            [editQuestion]="editQuestion"
+            [user]="user">
+          </app-edit-question>
+        </ng-container>
+      </ng-template>
+    </li>
+    <!------------- CATEGORIES -------------->
+    <li [ngbNavItem]="3">
+      <a ngbNavLink>CATEGORÍAS</a>
+      <ng-template ngbNavContent>
+        <!-- LIST CATEGORIES -->
+        <ng-container *ngIf="listPageCategory === true">
+          <app-list-categories
+            (add)="showNewPageCategory()"
+            (edit)="getEditCategory($event)"
+            [user]="user"
+          ></app-list-categories>
+        </ng-container>
+        <!-- NEW CATEGORY -->
+        <ng-container *ngIf="newPageCategory === true">
+          <app-new-category
+            (cancel)="showListPageCategory()"
+            [user]="user">
+          </app-new-category>
+        </ng-container>
+
+        <!-- EDIT CATEGORY -->
+        <ng-container *ngIf="editPageCategory === true">
+          <app-edit-category
+            (cancel)="showListPageCategory()"
+            [editCategory]="editCategory"
+            [user]="user">
+          </app-edit-category>
+        </ng-container>
+      </ng-template>
+    </li>
+
+    <!------------- VERIFICATIONS USERS -------------->
+    <li [ngbNavItem]="4">
+      <a ngbNavLink>RESPUESTAS DE USUARIOS</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST VERIFICATIONS -->
+        <ng-container *ngIf="listPageVerifications === true">
+          <app-list-verifications
+            (view)="getViewVerification($event)"
+            [user]="user">
+          </app-list-verifications>
+        </ng-container>
+
+        <!-- VIEW VERIFICATION -->
+        <ng-container *ngIf="viewPageVerification === true">
+          <app-view-verification
+            (back)="showListPageVerifications()"
+            [user]="user"
+            [verificationId]="verificationId">
+          </app-view-verification>
+        </ng-container>
+
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+</ng-container>

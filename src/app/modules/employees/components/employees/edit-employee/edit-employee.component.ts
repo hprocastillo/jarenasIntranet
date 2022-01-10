@@ -11,20 +11,17 @@ import User = firebase.User;
   styleUrls: ['./edit-employee.component.scss']
 })
 export class EditEmployeeComponent implements OnInit, OnChanges, OnDestroy {
-  //UNSUBSCRIBE METHOD
-  private unsubscribe$ = new Subject<void>();
-
   //INPUTS AND OUTPUTS
   @Input() user = {} as User;
   @Input() employeeId: string | any;
   @Output() cancel = new EventEmitter<boolean>();
-
   //RESULTS
   employee = {} as Employee;
   listEmployeeTypes: EmployeeTypes[] = [];
-
   //VARIABLES
   today = new Date();
+  //UNSUBSCRIBE METHOD
+  private unsubscribe$ = new Subject<void>();
 
   constructor(private employeeSvc: EmployeeService) {
   }

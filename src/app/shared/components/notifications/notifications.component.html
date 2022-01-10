@@ -1,0 +1,33 @@
+<ng-container *ngIf="authSvc.user$ | async as user">
+  <ul #nav="ngbNav" [(activeId)]="active" class="nav-tabs" ngbNav>
+
+    <!-- WAITING NOTIFICATIONS -->
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>NOTIFICACIONES</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST WAITING NOTIFICATIONS -->
+        <ng-container *ngIf="pageWaitingNotifications === true">
+          <app-waiting-notifications [user]="user"></app-waiting-notifications>
+        </ng-container>
+
+      </ng-template>
+    </li>
+
+    <!-- HISTORICAL NOTIFICATIONS -->
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>HISTORIAL</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST HISTORICAL NOTIFICATIONS -->
+        <ng-container *ngIf="pageHistoricalNotifications === true">
+          <app-historical-notifications [user]="user"></app-historical-notifications>
+        </ng-container>
+
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+</ng-container>

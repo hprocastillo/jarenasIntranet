@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <div class="title">
+    </div>
+    <div class="toolbar">
+    </div>
+  </div>
+
+  <div class="card-body">
+    <ul #nav="ngbNav" [(activeId)]="active" class="nav-tabs" ngbNav>
+
+      <!------------- DAILY ------------->
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>DIARIO</a>
+        <ng-template ngbNavContent>
+          <app-reports-by-vehicle-daily
+            [user]="user">
+          </app-reports-by-vehicle-daily>
+        </ng-template>
+      </li>
+
+      <!------------- MONTHLY ------------->
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>MENSUAL</a>
+        <ng-template ngbNavContent>
+          <app-reports-by-vehicle-monthly
+            [user]="user">
+          </app-reports-by-vehicle-monthly>
+        </ng-template>
+      </li>
+
+      <!------------- YEARLY ------------->
+      <li [ngbNavItem]="3">
+        <a ngbNavLink>ANUAL</a>
+        <ng-template ngbNavContent>
+          <app-reports-by-vehicle-yearly
+            [user]="user">
+          </app-reports-by-vehicle-yearly>
+        </ng-template>
+      </li>
+
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+</div>

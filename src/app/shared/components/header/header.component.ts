@@ -8,10 +8,9 @@ import User = firebase.User;
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  //INPUTS
+  //INPUTS AND OUTPUTS
   @Input() user = {} as User;
 
   //VARIABLES
   defaultLogo: string = '../../../../../assets/images/dashboard/user.png';
-  defaultTypeBusiness: string = 'Type Business';
 }

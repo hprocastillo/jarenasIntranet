@@ -1,0 +1,19 @@
+<ng-container *ngIf="dataChart1.length > 0">
+  <google-chart
+    [data]="dataChart1"
+    [options]="optionsChart"
+    [title]="titleChart1"
+    [type]="typeChart"
+  ></google-chart>
+</ng-container>
+
+<br>
+
+<ng-container *ngIf="dataChart2.length > 0">
+  <google-chart
+    [data]="dataChart2"
+    [options]="optionsChart"
+    [title]="titleChart2"
+    [type]="typeChart"
+  ></google-chart>
+</ng-container>

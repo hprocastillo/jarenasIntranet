@@ -1,20 +1,28 @@
-<!-- IF USER IS LOGIN -->
-<ng-container *ngIf="authSvc.user$ | async as user; else login">
+<!-- SHOW IF USER IS LOGGED -->
+<ng-container *ngIf="authSvc.user$ | async as user; else noLogin">
   <app-navbar></app-navbar>
-  <div class="container mt-3">
+  <div class="container-fluid mt-3">
     <div class="row">
-      <div class="col-lg-3">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-lg-2">
         <div class="card shadow p-2 bg-white rounded text-center">
           <div class="card-body p-2">
+
             <!-- HEADER -->
             <app-header [user]="user"></app-header>
+
             <hr>
+
             <!-- MENU -->
-            <app-menu [user]="user"></app-menu>
+            <app-menu></app-menu>
+
           </div>
         </div>
       </div>
-      <div class="col-lg-9">
+
+      <!-- MAIN COLUMN - BODY -->
+      <div class="col-lg-10">
         <div class="card shadow p-2 bg-white rounded">
           <div class="card-body p-2">
             <router-outlet></router-outlet>
@@ -25,9 +33,9 @@
   </div>
 </ng-container>
 
-<!-- IF USER IS NOT LOGIN -->
-<ng-template #login>
-  <div class="container mt-3">
+<!-- SHOW IF USER IS NOT LOGGED -->
+<ng-template #noLogin>
+  <div class="container-fluid mt-3">
     <router-outlet></router-outlet>
   </div>
 </ng-template>

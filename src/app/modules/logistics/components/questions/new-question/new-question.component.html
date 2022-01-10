@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header">
+    <h5>NUEVA PREGUNTA</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8">
+
+        <form (ngSubmit)="getSave(user)" [formGroup]="newForm">
+          <!-- Checklist -->
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label" for="cbChecklist">CHECKLIST:</label>
+            <div class="col-lg-9">
+              <select class="form-control" formControlName="checklistId" id="cbChecklist">
+                <option selected value="">SELECCIONAR</option>
+                <option *ngFor="let checklist of listChecklist"
+                        value="{{checklist.id}}">{{checklist.description}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label" for="cbCategory">CATEGORIA:</label>
+            <div class="col-lg-9">
+              <select class="form-control" formControlName="categoryId" id="cbCategory">
+                <option selected value="">SELECCIONAR</option>
+                <option *ngFor="let category of listCategories"
+                        value="{{category.id}}">{{category.name}}</option>
+              </select>
+            </div>
+          </div>
+
+
+          <!-- Description -->
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label" for="txtName">PREGUNTA:</label>
+            <div class="col-lg-9">
+              <textarea class="form-control" cols="30" formControlName="description" id="txtName" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button (click)="getCancel()" class="btn btn-danger btn-block" type="reset">CANCELAR</button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-primary btn-block" type="submit">GUARDAR</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

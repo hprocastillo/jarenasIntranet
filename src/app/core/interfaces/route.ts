@@ -19,7 +19,7 @@ export interface Route {
   updatedAt: Timestamp;
 }
 
-export interface Cities {
+export interface City {
   id?: string;
   name: string;
   coordinatesUrl?: string;

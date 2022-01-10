@@ -1,1 +1,75 @@
-<p>vehicles works!</p>
+<ng-container *ngIf="authSvc.user$ | async as user">
+  <ul #nav="ngbNav" [(activeId)]="active" class="nav-tabs" ngbNav>
+
+    <!------------- VEHICLE ------------->
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>VEHÍCULOS</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST VEHICLES -->
+        <ng-container *ngIf="pageListVehicles === true">
+          <app-list-vehicles
+            (add)="showNewVehicle()"
+            (edit)="getEditVehicle($event)"
+            [user]="user">
+          </app-list-vehicles>
+        </ng-container>
+
+        <!-- NEW VEHICLE -->
+        <ng-container *ngIf="pageNewVehicle === true">
+          <app-new-vehicle
+            (cancel)="showListVehicles()"
+            [user]="user">
+          </app-new-vehicle>
+        </ng-container>
+
+        <!-- EDIT ROUTE -->
+        <ng-container *ngIf="pageEditVehicle === true">
+          <app-edit-vehicle
+            (cancel)="showListVehicles()"
+            [editVehicle]="editVehicle"
+            [user]="user">
+          </app-edit-vehicle>
+        </ng-container>
+
+      </ng-template>
+    </li>
+
+    <!------------- BRANDS -------------->
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>MARCAS</a>
+      <ng-template ngbNavContent>
+
+        <!-- LIST BRANDS -->
+        <ng-container *ngIf="pageListBrands === true">
+          <app-list-brands
+            (add)="showNewBrand()"
+            (edit)="getEditBrand($event)"
+            [user]="user">
+          </app-list-brands>
+        </ng-container>
+
+        <!-- EDIT BRANDS -->
+        <ng-container *ngIf="pageEditBrand === true">
+          <app-edit-brand
+            (cancel)="showListBrands()"
+            [editBrand]="editBrand"
+            [user]="user">
+          </app-edit-brand>
+        </ng-container>
+
+        <!-- NEW BRAND -->
+        <ng-container *ngIf="pageNewBrand === true">
+          <app-new-brand
+            (cancel)="showListBrands()"
+            [user]="user">
+          </app-new-brand>
+        </ng-container>
+
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+</ng-container>

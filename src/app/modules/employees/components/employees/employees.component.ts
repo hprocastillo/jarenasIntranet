@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../../../../core/services/auth.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {AuthService} from "../../../../core/services/auth.service";
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent {
   //INITIAL TAB
   active = 1;
 
@@ -23,9 +23,6 @@ export class EmployeesComponent implements OnInit {
   editEmployeeType: string | any;
 
   constructor(public authSvc: AuthService) {
-  }
-
-  ngOnInit(): void {
   }
 
   //SHOW PAGES EMPLOYEES
